@@ -1,4 +1,4 @@
-package modelo;
+package com.redesocial.modelo;
 
 import java.time.LocalDateTime;
 

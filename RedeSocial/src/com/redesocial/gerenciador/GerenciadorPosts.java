@@ -1,6 +1,6 @@
-package Gerenciador;
+package com.redesocial.gerenciador;
 
-import modelo.Post;
+import com.redesocial.modelo.Post;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

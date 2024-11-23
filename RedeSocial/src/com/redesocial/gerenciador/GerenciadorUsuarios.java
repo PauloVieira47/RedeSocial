@@ -1,6 +1,6 @@
-package Gerenciador;
+package com.redesocial.gerenciador;
 
-import modelo.Usuario;
+import com.redesocial.modelo.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 

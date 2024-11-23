@@ -1,4 +1,4 @@
-package modelo;
+package com.redesocial.modelo;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -25,33 +25,34 @@ public class Usuario {
         this.posts = new ArrayList<>();
     }
 
-    // Getters e setters
+    //Meus get e set
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
-
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
-
     public String getUsername() {
         return username;
     }
-
     public List<Post> getPosts() {
         return posts;
     }
-
     public void adicionarPost(Post post) {
         posts.add(post);
+    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override

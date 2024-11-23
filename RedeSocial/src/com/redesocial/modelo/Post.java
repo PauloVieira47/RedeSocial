@@ -1,4 +1,7 @@
-package modelo;
+package com.redesocial.modelo;
+
+import com.redesocial.modelo.Comentario;
+import com.redesocial.modelo.Usuario;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
