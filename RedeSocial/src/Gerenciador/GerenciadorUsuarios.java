@@ -4,10 +4,8 @@ import modelo.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Classe que gerencia os usuários da rede social.
- * Permite cadastrar, buscar e listar usuários.
- */
+ // Permite cadastrar, buscar e listar usuários.
+
 public class GerenciadorUsuarios {
     private List<Usuario> usuarios;
     private int proximoId;
