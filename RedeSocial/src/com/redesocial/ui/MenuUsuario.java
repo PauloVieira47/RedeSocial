@@ -58,6 +58,7 @@ public class MenuUsuario {
     private void buscarUsuarios() {
         System.out.println("= Buscar Usuários =");
         System.out.println("Função a ser implementada...");
+        
     }
     //gerenciador de amizades para o usuario.
     private void gerenciarAmizades() {

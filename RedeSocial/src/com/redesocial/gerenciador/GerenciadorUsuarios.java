@@ -35,5 +35,6 @@ public class GerenciadorUsuarios {
                 .filter(usuario -> usuario.getUsername().equals(username))
                 .findFirst()
                 .orElse(null);
+
     }
 }
