@@ -51,9 +51,9 @@ public class GerenciadorUsuarios {
      */
     public Usuario buscarPorUsername(String username) {
         return usuarios.stream()
-                .filter(usuario -> usuario.getUsername().equals(username))
+                .filter(usuario -> usuario.getUsername().trim().equalsIgnoreCase(username.trim())) // Comparação insensível
                 .findFirst()
-                .orElse(null);
+                .orElse(null);  // Retorna null se não encontrar o usuário
     }
 
     /**

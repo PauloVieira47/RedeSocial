@@ -13,7 +13,7 @@ public class Usuario {
     private String nome;
     private String username;
     private String email;
-    private String senha;
+    private String senha;  // Atributo senha
     private LocalDateTime dataCadastro;
     private List<Usuario> amigos;
     private List<Post> posts;
@@ -62,6 +62,14 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;  // Método getter para senha
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;  // Método setter para senha
     }
 
     public List<Usuario> getAmigos() {

@@ -38,31 +38,52 @@ public class MenuPrincipal {
         } while (opcao != 0);
     }
 
-    // Função que permite que o usuário faça login
+    // Função que permite que o usuário faça login, pedindo username e senha
     private void fazerLogin() {
         System.out.print("Digite seu username: ");
         String username = scanner.nextLine();
 
         Usuario usuario = gerenciadorUsuarios.buscarPorUsername(username);
         if (usuario != null) {
-            System.out.println("Login bem-sucedido! Bem-vindo, " + usuario.getNome());
-            exibirMenuLogado(usuario);
+            System.out.print("Digite sua senha: ");
+            String senha = scanner.nextLine();
+
+            if (usuario.getSenha().equals(senha)) {
+                System.out.println("Login bem-sucedido! Bem-vindo, " + usuario.getNome());
+                exibirMenuLogado(usuario);
+            } else {
+                System.out.println("Senha incorreta. Tente novamente.");
+            }
         } else {
             System.out.println("Usuário não encontrado. Verifique o username ou cadastre-se.");
         }
     }
 
-    // Cadastra um novo usuário no sistema
+    // Cadastra um novo usuário no sistema com validação do email
     private void cadastrarUsuario() {
         System.out.print("Digite seu nome: ");
         String nome = scanner.nextLine();
         System.out.print("Digite seu username: ");
         String username = scanner.nextLine();
-        System.out.print("Digite seu email: ");
-        String email = scanner.nextLine();
+
+        // Validação do email
+        String email = "";
+        while (true) {
+            System.out.print("Digite seu email: ");
+            email = scanner.nextLine();
+
+            if (email.contains("@")) {
+                System.out.println("Email válido.");
+                break; // Se o email contiver "@", sai do loop
+            } else {
+                System.out.println("Email inválido. O email deve conter '@'. Tente novamente.");
+            }
+        }
+
         System.out.print("Digite sua senha: ");
         String senha = scanner.nextLine();
 
+        // Criação e cadastro do novo usuário
         Usuario novoUsuario = new Usuario(nome, username, email, senha);
         gerenciadorUsuarios.cadastrar(novoUsuario);
         System.out.println("Usuário cadastrado com sucesso!");
