@@ -1,17 +1,23 @@
 package com.redesocial.ui;
+
+import com.redesocial.gerenciador.GerenciadorPosts;
 import com.redesocial.gerenciador.GerenciadorUsuarios;
 import com.redesocial.modelo.Usuario;
 
 import java.util.Scanner;
+
 public class MenuPrincipal {
     private final GerenciadorUsuarios gerenciadorUsuarios;
+    private final GerenciadorPosts gerenciadorPosts;
     private final Scanner scanner;
 
-    public MenuPrincipal(GerenciadorUsuarios gerenciadorUsuarios) {
+    public MenuPrincipal(GerenciadorUsuarios gerenciadorUsuarios, GerenciadorPosts gerenciadorPosts) {
         this.gerenciadorUsuarios = gerenciadorUsuarios;
+        this.gerenciadorPosts = gerenciadorPosts;
         this.scanner = new Scanner(System.in);
     }
-     //mostrar o menu principal para o usuario
+
+    // Mostrar o menu principal para o usuário
     public void exibirMenu() {
         int opcao;
         do {
@@ -31,8 +37,8 @@ public class MenuPrincipal {
             }
         } while (opcao != 0);
     }
-     // função que permite que o usuário faça login.
 
+    // Função que permite que o usuário faça login
     private void fazerLogin() {
         System.out.print("Digite seu username: ");
         String username = scanner.nextLine();
@@ -45,7 +51,8 @@ public class MenuPrincipal {
             System.out.println("Usuário não encontrado. Verifique o username ou cadastre-se.");
         }
     }
-     //cadastra um novo usuário no sistema
+
+    // Cadastra um novo usuário no sistema
     private void cadastrarUsuario() {
         System.out.print("Digite seu nome: ");
         String nome = scanner.nextLine();
@@ -60,8 +67,10 @@ public class MenuPrincipal {
         gerenciadorUsuarios.cadastrar(novoUsuario);
         System.out.println("Usuário cadastrado com sucesso!");
     }
+
+    // Exibe o menu logado utilizando MenuUsuario
     private void exibirMenuLogado(Usuario usuario) {
-        MenuUsuario menuUsuario = new MenuUsuario(usuario);
+        MenuUsuario menuUsuario = new MenuUsuario(usuario, gerenciadorUsuarios, gerenciadorPosts);
         menuUsuario.exibirMenu();
     }
 }
