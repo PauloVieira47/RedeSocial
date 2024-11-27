@@ -59,7 +59,7 @@ public class MenuPrincipal {
         }
     }
 
-    // Cadastra um novo usuário no sistema com validação do email
+    // Cadastra um novo usuário no sistema com validação do email e senha mínima de 6 caracteres
     private void cadastrarUsuario() {
         System.out.print("Digite seu nome: ");
         String nome = scanner.nextLine();
@@ -80,8 +80,19 @@ public class MenuPrincipal {
             }
         }
 
-        System.out.print("Digite sua senha: ");
-        String senha = scanner.nextLine();
+        // Validação da senha (mínimo de 6 caracteres)
+        String senha = "";
+        while (true) {
+            System.out.print("Digite sua senha (mínimo 6 caracteres): ");
+            senha = scanner.nextLine();
+
+            if (senha.length() >= 6) {
+                System.out.println("Senha válida.");
+                break; // Se a senha tiver 6 ou mais caracteres, sai do loop
+            } else {
+                System.out.println("A senha deve ter no mínimo 6 caracteres. Tente novamente.");
+            }
+        }
 
         // Criação e cadastro do novo usuário
         Usuario novoUsuario = new Usuario(nome, username, email, senha);
