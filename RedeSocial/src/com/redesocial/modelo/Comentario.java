@@ -2,20 +2,44 @@ package com.redesocial.modelo;
 
 import java.time.LocalDateTime;
 
+/**
+ * Classe que representa um comentário feito em um post.
+ */
 public class Comentario {
-    //Contém informações sobre o autor, conteúdo e a data do comentário.
     private Integer id;
     private Usuario autor;
     private String conteudo;
     private LocalDateTime dataComentario;
-    private Post post; //Post em que o comentário foi feito
+    private Post post;
 
-    //Construtor do Comentario.
+    /**
+     * Construtor para criar um comentário.
+     * @param autor Autor do comentário.
+     * @param conteudo Conteúdo do comentário.
+     * @param post Post associado.
+     */
     public Comentario(Usuario autor, String conteudo, Post post) {
         this.autor = autor;
         this.conteudo = conteudo;
         this.dataComentario = LocalDateTime.now();
         this.post = post;
+    }
+
+    // Getters
+    public Usuario getAutor() {
+        return autor;
+    }
+
+    public String getConteudo() {
+        return conteudo;
+    }
+
+    public LocalDateTime getDataComentario() {
+        return dataComentario;
+    }
+
+    public Post getPost() {
+        return post;
     }
 
     @Override

@@ -1,12 +1,8 @@
 package com.redesocial.modelo;
 
-import com.redesocial.modelo.Comentario;
-import com.redesocial.modelo.Usuario;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class Post {
     private Integer id;
@@ -25,7 +21,7 @@ public class Post {
         this.comentarios = new ArrayList<>();
     }
 
-    //meus get e set
+    // Getters e Setters
     public Integer getId() {
         return id;
     }
@@ -66,16 +62,16 @@ public class Post {
         return comentarios;
     }
 
-    //metodos para adicionar e remover curtidas
+    // Métodos para Curtidas
     public void adicionarCurtida(Usuario usuario) {
         curtidas.add(usuario);
     }
-    //metodo para remover
+
     public void removerCurtida(Usuario usuario) {
         curtidas.remove(usuario);
     }
 
-    //metodo para adicionar um comentário
+    // Método para adicionar comentário
     public void adicionarComentario(Comentario comentario) {
         comentarios.add(comentario);
     }

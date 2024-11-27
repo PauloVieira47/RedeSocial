@@ -129,4 +129,8 @@ public class Usuario {
                 ", username='" + username + '\'' +
                 '}';
     }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }
