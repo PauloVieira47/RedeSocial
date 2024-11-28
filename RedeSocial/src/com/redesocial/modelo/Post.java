@@ -6,14 +6,22 @@ import java.util.List;
 
 public class Post {
     private Integer id;
-    private Usuario autor;
-    private String conteudo;
-    private LocalDateTime dataPublicacao;
-    private List<Usuario> curtidas;
-    private List<Comentario> comentarios;
+    private Usuario autor; // O usuário que criou o post
+    private String conteudo; // Conteúdo do post
+    private LocalDateTime dataPublicacao; // Data de publicação do post
+    private List<Usuario> curtidas; // Lista de usuários que curtiram o post
+    private List<Comentario> comentarios; // Lista de comentários no post
 
-    // Construtor
+    // Construtor do post
     public Post(Usuario autor, String conteudo) {
+        if (conteudo == null || conteudo.trim().isEmpty()) {
+            throw new IllegalArgumentException("Conteúdo do post não pode ser vazio.");
+        }
+
+        if (conteudo.length() > 500) {
+            throw new IllegalArgumentException("Conteúdo do post não pode ter mais de 500 caracteres.");
+        }
+
         this.autor = autor;
         this.conteudo = conteudo;
         this.dataPublicacao = LocalDateTime.now();
@@ -21,7 +29,7 @@ public class Post {
         this.comentarios = new ArrayList<>();
     }
 
-    // Getters e Setters
+    // Getters e setters
     public Integer getId() {
         return id;
     }
@@ -43,15 +51,19 @@ public class Post {
     }
 
     public void setConteudo(String conteudo) {
+        if (conteudo == null || conteudo.trim().isEmpty()) {
+            throw new IllegalArgumentException("Conteúdo do post não pode ser vazio.");
+        }
+
+        if (conteudo.length() > 500) {
+            throw new IllegalArgumentException("Conteúdo do post não pode ter mais de 500 caracteres.");
+        }
+
         this.conteudo = conteudo;
     }
 
     public LocalDateTime getDataPublicacao() {
         return dataPublicacao;
-    }
-
-    public void setDataPublicacao(LocalDateTime dataPublicacao) {
-        this.dataPublicacao = dataPublicacao;
     }
 
     public List<Usuario> getCurtidas() {
@@ -62,18 +74,23 @@ public class Post {
         return comentarios;
     }
 
-    // Métodos para Curtidas
+    // Métodos para interagir com o post
     public void adicionarCurtida(Usuario usuario) {
-        curtidas.add(usuario);
+        if (!curtidas.contains(usuario)) {
+            curtidas.add(usuario);
+        }
     }
 
     public void removerCurtida(Usuario usuario) {
         curtidas.remove(usuario);
     }
 
-    // Método para adicionar comentário
     public void adicionarComentario(Comentario comentario) {
         comentarios.add(comentario);
+    }
+
+    public void removerComentario(Comentario comentario) {
+        comentarios.remove(comentario);
     }
 
     @Override

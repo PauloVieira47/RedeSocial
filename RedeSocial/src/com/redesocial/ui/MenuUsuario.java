@@ -60,6 +60,7 @@ public class MenuUsuario {
         System.out.println("1. Nome");
         System.out.println("2. Username");
         System.out.println("3. Email");
+        System.out.println("4. Senha");
         System.out.println("0. Voltar");
         System.out.print("Escolha uma opção: ");
         int opcao = scanner.nextInt();
@@ -69,31 +70,72 @@ public class MenuUsuario {
             case 1 -> editarNome();
             case 2 -> editarUsername();
             case 3 -> editarEmail();
+            case 4 -> editarSenha();
             case 0 -> System.out.println("Voltando ao menu...");
             default -> System.out.println("Opção inválida.");
         }
     }
 
+    // Função para editar o nome
     private void editarNome() {
         System.out.print("Digite o novo nome: ");
         String novoNome = scanner.nextLine();
-        usuario.setNome(novoNome);
-        System.out.println("Nome atualizado com sucesso!");
+        if (novoNome.trim().isEmpty()) {
+            System.out.println("O nome não pode ser vazio.");
+        } else if (novoNome.equals(usuario.getNome())) {
+            System.out.println("O nome não pode ser igual ao anterior.");
+        } else {
+            usuario.setNome(novoNome);
+            System.out.println("Nome atualizado com sucesso!");
+        }
     }
 
+    // Função para editar o username
     private void editarUsername() {
         System.out.print("Digite o novo username: ");
         String novoUsername = scanner.nextLine();
-        usuario.setUsername(novoUsername);
-        System.out.println("Username atualizado com sucesso!");
+        if (novoUsername.equals(usuario.getUsername())) {
+            System.out.println("O username não pode ser igual ao anterior.");
+        } else {
+            usuario.setUsername(novoUsername);
+            System.out.println("Username atualizado com sucesso!");
+        }
     }
 
+    // Função para editar o email
     private void editarEmail() {
-        System.out.print("Digite o novo email: ");
-        String novoEmail = scanner.nextLine();
-        usuario.setEmail(novoEmail);
-        System.out.println("Email atualizado com sucesso!");
+        String novoEmail;
+        while (true) {
+            System.out.print("Digite o novo email: ");
+            novoEmail = scanner.nextLine();
+
+            if (novoEmail.equals(usuario.getEmail())) {
+                System.out.println("O email não pode ser igual ao anterior.");
+            } else if (!novoEmail.contains("@")) {
+                System.out.println("Email inválido. O email deve conter '@'. Tente novamente.");
+            } else {
+                usuario.setEmail(novoEmail);
+                System.out.println("Email atualizado com sucesso!");
+                break;
+            }
+        }
     }
+
+    // Função para editar a senha
+    private void editarSenha() {
+        System.out.print("Digite a nova senha: ");
+        String novaSenha = scanner.nextLine();
+
+        if (novaSenha.equals(usuario.getSenha())) {
+            System.out.println("A nova senha não pode ser igual à senha anterior.");
+        } else if (novaSenha.length() < 6) {
+            System.out.println("A senha deve ter no mínimo 6 caracteres.");
+        } else {
+            usuario.setSenha(novaSenha);
+            System.out.println("Senha atualizada com sucesso!");
+        }
+
+}
 
     private void criarPost() {
         System.out.println("=== Criar Post ===");
